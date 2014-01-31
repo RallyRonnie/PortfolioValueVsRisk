@@ -12,6 +12,16 @@ function ValueRisk() {
             { label: "Q3 2012", start: "2012-07-01", end: "2012-09-30" },
             { label: "Q4 2012", start: "2012-10-01", end: "2012-12-31" }
         ];
+        var CCOLORS = [
+        	'rgba(204,  0,  0, .6)',
+        	'rgba(204,204,  0, .6)',
+        	'rgba(  0,204,  0, .6)',
+        	'rgba(  0,102,204, .6)',
+        	'rgba(102,  0,204, .6)',
+        	'rgba( 96, 96, 96, .6)',
+        	'rgba(204,102,  0, .6)',
+        	'rgba(  0,  0,204, .6)'
+        ];
 
         var rallyDataSource = null;
         var typeDropDown = null;
@@ -125,10 +135,11 @@ function ValueRisk() {
             console.log(results);
 
             var series = [];
+            var ccount = 0;
             var currentSeries = { name: null };
             dojo.forEach( results.portfolioItems, function(item) {
                 if( getInvestmentCategory(item) != currentSeries.name ) {
-                    currentSeries = { name: getInvestmentCategory(item), data: [] };
+                    currentSeries = { name: getInvestmentCategory(item), data: [], color: CCOLORS[ccount++] };
                     series.push(currentSeries);
                 }
                 var bubbleSize = MIN_BUBBLE_SIZE;
@@ -137,7 +148,7 @@ function ValueRisk() {
                     bubbleSize = MIN_BUBBLE_SIZE * item.PreliminaryEstimate.Value;
                     sizeText = item.PreliminaryEstimate.Name;
                 }
-                currentSeries.data.push( { name: item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
+                currentSeries.data.push( { name: item.FormattedID + ": " + item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
             });
 
             renderChart( series );
@@ -165,6 +176,7 @@ function ValueRisk() {
                 label:'Type: ',
                 showLabel:true,
                 type: 'typeDefinition',
+                defaultDisplayValue: 'Feature',
                 attribute:'Name',
                 order:'Ordinal desc',
                 fetch:'Ordinal,TypePath',
