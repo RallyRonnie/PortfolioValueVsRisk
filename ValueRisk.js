@@ -34,7 +34,8 @@ function ValueRisk() {
             var chart = new Highcharts.Chart({
                 chart: {
                     renderTo: 'chart',
-                    defaultSeriesType: 'scatter'
+                    defaultSeriesType: 'scatter',
+                    zoomType: 'xy'
                 },
                 title: { text: 'Portfolio Value vs. Risk' },
                 //subtitle: { text: QUARTERS[parseInt(quarterDropDown.getValue())].label },
@@ -61,11 +62,11 @@ function ValueRisk() {
                 },
                 legend: {
                     layout: 'vertical',
-                    style: {
-                        left: '100px',
-                        top: '70px',
-                        bottom: 'auto'
-                    },
+                    align: 'left',
+                    verticalAlign: 'top',
+                    x: 100,
+                    y: 70,
+                    floating: true,
                     backgroundColor: '#FFFFFF',
                     borderWidth: 1
                 },
@@ -145,7 +146,7 @@ function ValueRisk() {
                 var bubbleSize = MIN_BUBBLE_SIZE;
                 var sizeText = "Unknown";
                 if ( item.PreliminaryEstimate ) {
-                    bubbleSize = MIN_BUBBLE_SIZE * item.PreliminaryEstimate.Value;
+                    bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value/10);
                     sizeText = item.PreliminaryEstimate.Name;
                 }
                 currentSeries.data.push( { name: item.FormattedID + ": " + item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
