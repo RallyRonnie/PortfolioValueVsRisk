@@ -1,7 +1,7 @@
 rally-value-risk
 ===============
 
-![Alt text](https://raw.github.com/osulehria/rally-value-risk/master/deploy/screenshot.png)
+![Alt text](https://raw.github.com/RallyRonnie/PortfolioValueVsRisk/master/deploy/screenshot.png)
 
 ##Overview
 
