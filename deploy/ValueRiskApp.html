@@ -48,7 +48,8 @@
                     var chart = new Highcharts.Chart({
                         chart: {
                             renderTo: 'chart',
-                            defaultSeriesType: 'scatter'
+                            defaultSeriesType: 'scatter',
+                            zoomType: 'xy'
                         },
                         title: { text: 'Portfolio Value vs. Risk' },
                         //subtitle: { text: QUARTERS[parseInt(quarterDropDown.getValue())].label },
@@ -75,11 +76,11 @@
                         },
                         legend: {
                             layout: 'vertical',
-                            style: {
-                                left: '100px',
-                                top: '70px',
-                                bottom: 'auto'
-                            },
+                            align: 'left',
+                            verticalAlign: 'top',
+                            x: 50,
+                            y: 0,
+                            floating: true,
                             backgroundColor: '#FFFFFF',
                             borderWidth: 1
                         },
@@ -159,7 +160,7 @@
                         var bubbleSize = MIN_BUBBLE_SIZE;
                         var sizeText = "Unknown";
                         if ( item.PreliminaryEstimate ) {
-                            bubbleSize = MIN_BUBBLE_SIZE * item.PreliminaryEstimate.Value;
+                            bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value);
                             sizeText = item.PreliminaryEstimate.Name;
                         }
                         currentSeries.data.push( { name: item.FormattedID + ": " + item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
@@ -228,6 +229,6 @@
     <span id="type"></span>&nbsp;&nbsp;<span id="quarters"></span>
 </div>
 <br/><br/>
-<div id="chart" style="height: 600px; width: 800px"></div>
+<div id="chart" style="width: 100%"></div>
 </body>
 </html>

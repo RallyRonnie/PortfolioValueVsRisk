@@ -64,8 +64,8 @@ function ValueRisk() {
                     layout: 'vertical',
                     align: 'left',
                     verticalAlign: 'top',
-                    x: 100,
-                    y: 70,
+                    x: 50,
+                    y: 0,
                     floating: true,
                     backgroundColor: '#FFFFFF',
                     borderWidth: 1
@@ -146,7 +146,7 @@ function ValueRisk() {
                 var bubbleSize = MIN_BUBBLE_SIZE;
                 var sizeText = "Unknown";
                 if ( item.PreliminaryEstimate ) {
-                    bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value/10);
+                    bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value);
                     sizeText = item.PreliminaryEstimate.Name;
                 }
                 currentSeries.data.push( { name: item.FormattedID + ": " + item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
