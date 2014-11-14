@@ -28,8 +28,8 @@ function ValueRisk() {
         var quarterDropDown = null;
 
         function renderChart(data){
-            console.log("Render chart");
-            console.log(data);
+//            console.log("Render chart");
+//            console.log(data);
 
             var chart = new Highcharts.Chart({
                 chart: {
@@ -49,7 +49,7 @@ function ValueRisk() {
                     }
                 },
                 yAxis: {
-                    min: 0,
+                    min: -1,
                     title: {
                         text: 'Risk'
                     }

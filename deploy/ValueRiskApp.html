@@ -42,8 +42,8 @@
                 var quarterDropDown = null;
         
                 function renderChart(data){
-                    console.log("Render chart");
-                    console.log(data);
+        //            console.log("Render chart");
+        //            console.log(data);
         
                     var chart = new Highcharts.Chart({
                         chart: {
@@ -63,7 +63,7 @@
                             }
                         },
                         yAxis: {
-                            min: 0,
+                            min: -1,
                             title: {
                                 text: 'Risk'
                             }
@@ -213,6 +213,14 @@
 
     </style>
 
+
+    <style type="text/css">
+.itdropdown {
+    /*position: fixed;*/
+    top: 5px;
+}
+    </style>
+
     <script type="text/javascript">
 
         function onLoad() {
@@ -226,7 +234,8 @@
 </head>
 <body>
 <div>
-    <span id="type"></span>&nbsp;&nbsp;<span id="quarters"></span>
+	<span id="type" class='itdropdown'></span><!-- &nbsp;&nbsp; --><span id="quarters"></span>
+<!--     <span id="type"></span>&nbsp;&nbsp;<span id="quarters"></span> -->
 </div>
 <br/><br/>
 <div id="chart" style="width: 100%"></div>
