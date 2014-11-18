@@ -2,7 +2,7 @@ function ValueRisk() {
   var that = this;
   this.display = function(element) {
 		var MIN_BUBBLE_SIZE = 5;
-
+		var BUBBLE_SIZE_DIVIDER = 10;
         var QUARTERS_BACK = 2;
         var NUM_QUARTERS = 12;
         var QUARTERS =  [
@@ -146,7 +146,7 @@ function ValueRisk() {
                 var bubbleSize = MIN_BUBBLE_SIZE;
                 var sizeText = "Unknown";
                 if ( item.PreliminaryEstimate ) {
-                    bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value);
+                    bubbleSize = MIN_BUBBLE_SIZE * (item.PreliminaryEstimate.Value)/BUBBLE_SIZE_DIVIDER;
                     sizeText = item.PreliminaryEstimate.Name;
                 }
                 currentSeries.data.push( { name: item.FormattedID + ": " + item.Name, x: item.ValueScore, y: item.RiskScore, size: sizeText, marker: { radius: bubbleSize } });
